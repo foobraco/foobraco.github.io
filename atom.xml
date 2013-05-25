@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Bryan Alvarado's Blog]]></title>
+  <link href="http://foobraco.github.io/atom.xml" rel="self"/>
+  <link href="http://foobraco.github.io"/>
+  <updated>2013-05-25T16:34:27.420Z</updated>
+  <id>http://foobraco.github.io/</id>
+  <author>
+    <name><![CDATA[Bryan Alvarado]]></name>
+    <email><![CDATA[bryan@502Studios.net]]></email>
+  </author>
+  <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[Installing a Jar in Maven local repository]]></title>
+    <link href="http://foobraco.github.io/2013/05/25/installing-a-jar-in-maven-local-repository/"/>
+    <id>http://foobraco.github.io/2013/05/25/installing-a-jar-in-maven-local-repository/</id>
+    <published>2013-05-25T06:02:06.000Z</published>
+    <updated>2013-05-25T06:02:56.000Z</updated>
+    <content type="html"><![CDATA[<p>You have to run the following command in the terminal:</p>
+<pre><code>mvn install:install-file -Dfile=<span class="xml"><span class="tag">&lt;<span class="title">path-to-file</span>&gt;</span> -DgroupId=<span class="tag">&lt;<span class="title">group-id</span>&gt;</span> \
+-DartifactId=<span class="tag">&lt;<span class="title">artifact-id</span>&gt;</span> -Dversion=<span class="tag">&lt;<span class="title">version</span>&gt;</span> -Dpackaging=<span class="tag">&lt;<span class="title">packaging</span>&gt;</span></span>
+</code></pre>
+<p>where:</p>
+<p><em>path-to-file</em>: is the path to the jar you want to install in the local repository</p>
+<p><em>group-id</em>: the group in the maven repository you want to use</p>
+<p><em>artifact-id</em>: the name that the jar will receive when you want to use it in a pom.xml</p>
+<p><em>version</em>: the version of the jar/library</p>
+<p><em>packaging</em>: the type of package it is, usually is a jar</p>
+]]></content>
+    <category scheme="http://foobraco.github.io/tags/maven%2C-java%2C-jar/" term="maven, java, jar"/>
+  </entry>
+  <entry>
+    <title type="html"><![CDATA[Using Android Library Projects with Maven]]></title>
+    <link href="http://foobraco.github.io/2013/05/24/android_library_maven/"/>
+    <id>http://foobraco.github.io/2013/05/24/android_library_maven/</id>
+    <published>2013-05-25T05:11:04.000Z</published>
+    <updated>2013-05-25T05:48:48.000Z</updated>
+    <content type="html"><![CDATA[<p>Ok so I&#39;ve decided to start with a new blog (again) and to make a good first post I&#39;m going to explain how to use Android Library Projects integrated with Maven.</p>
+<p>Your Android project has to have the android maven plugin in its pom.xml file in order to unpack the android library project that you are going to package as an apklib.</p>
+<p>The first thing you have to make is go to the root directory of your Android Library Project, compress it all in a zip file, and rename to the extension apklib</p>
+<p>The files included in this gist are the maven script to convert your new apklib file into a dependency in your maven repo and the second one is the structure to add the dependency on the android pom.xml file.</p>
+<p>This is the script to generate the apklib in your local maven repository</p>
+<pre><code><span class="comment">mvn</span> <span class="comment">install:install</span>-<span class="comment">file</span> <span class="comment">\</span>
+  <span class="literal">-</span><span class="comment">DgroupId=org</span>.<span class="comment">abc</span> <span class="comment">\</span>
+  <span class="literal">-</span><span class="comment">DartifactId=mywidget</span> <span class="comment">\</span>
+  <span class="literal">-</span><span class="comment">Dpackaging=apklib</span> <span class="comment">\</span>
+  <span class="literal">-</span><span class="comment">Dversion=1</span>.<span class="comment">0</span>.<span class="comment">0</span> <span class="comment">\</span>
+  <span class="literal">-</span><span class="comment">Dfile=mylib</span>.<span class="comment">apklib</span> <span class="comment">\</span>
+  <span class="literal">-</span><span class="comment">DgeneratePom=true
+</code></pre>
+<p>and this is how you add the dependency in your pom.xml</p>
+<pre><code> <span class="tag">&lt;<span class="title">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.abc<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>mywidget<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="title">version</span>&gt;</span>    
+    <span class="tag">&lt;<span class="title">type</span>&gt;</span>mylib.apklib<span class="tag">&lt;/<span class="title">type</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">dependency</span>&gt;</span>
+</code></pre>
+]]></content>
+    <category scheme="http://foobraco.github.io/tags/android%2C-maven%2C-java/" term="android, maven, java"/>
+  </entry>
+</feed>
