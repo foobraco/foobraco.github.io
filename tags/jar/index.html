@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2013/5 | Bryan Alvarado's Blog</title>
+  <title>jar | Bryan Alvarado's Blog</title>
   <meta name="author" content="Bryan Alvarado">
   
   <meta name="description" content="Bryan Alvarado's Blog">
@@ -45,7 +45,7 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">2013/5</h2>
+<h2 class="archive-title tag">jar</h2>
 
 
   
@@ -83,62 +83,6 @@
         
           <div class="alignleft">
             <a href="/2013/05/25/installing-a-jar-in-maven-local-repository/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-05-25T05:11:04.000Z"><a href="/2013/05/24/android_library_maven/">May 24 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/05/24/android_library_maven/">Using Android Library Projects with Maven</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Ok so I&#39;ve decided to start with a new blog (again) and to make a good first post I&#39;m going to explain how to use Android Library Projects integrated with Maven.</p>
-<p>Your Android project has to have the android maven plugin in its pom.xml file in order to unpack the android library project that you are going to package as an apklib.</p>
-<p>The first thing you have to make is go to the root directory of your Android Library Project, compress it all in a zip file, and rename to the extension apklib</p>
-<p>The files included in this gist are the maven script to convert your new apklib file into a dependency in your maven repo and the second one is the structure to add the dependency on the android pom.xml file.</p>
-<p>This is the script to generate the apklib in your local maven repository</p>
-<pre><code><span class="comment">mvn</span> <span class="comment">install:install</span>-<span class="comment">file</span> <span class="comment">\</span>
-  <span class="literal">-</span><span class="comment">DgroupId=org</span>.<span class="comment">abc</span> <span class="comment">\</span>
-  <span class="literal">-</span><span class="comment">DartifactId=mywidget</span> <span class="comment">\</span>
-  <span class="literal">-</span><span class="comment">Dpackaging=apklib</span> <span class="comment">\</span>
-  <span class="literal">-</span><span class="comment">Dversion=1</span>.<span class="comment">0</span>.<span class="comment">0</span> <span class="comment">\</span>
-  <span class="literal">-</span><span class="comment">Dfile=mylib</span>.<span class="comment">apklib</span> <span class="comment">\</span>
-  <span class="literal">-</span><span class="comment">DgeneratePom=true
-</code></pre>
-<p>and this is how you add the dependency in your pom.xml</p>
-<pre><code> <span class="tag">&lt;<span class="title">dependency</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.abc<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>mywidget<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="title">version</span>&gt;</span>    
-    <span class="tag">&lt;<span class="title">type</span>&gt;</span>mylib.apklib<span class="tag">&lt;/<span class="title">type</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">dependency</span>&gt;</span>
-</code></pre>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/05/24/android_library_maven/#more" class="more-link">Read More</a>
           </div>
         
         

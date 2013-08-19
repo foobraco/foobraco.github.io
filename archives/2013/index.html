@@ -20,123 +20,126 @@
 
   <link href="/favicon.png" rel="icon">
   <link rel="alternate" href="/atom.xml" title="Bryan Alvarado's Blog" type="application/atom+xml">
-  <link rel="stylesheet" href="/stylesheets/style.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/stylesheets/social_foundicons.css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <script src="http://upcdn.b0.upaiyun.com/libs/jquery/jquery-1.8.3.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
   
 </head>
 
 
 <body>
-        <script type="text/javascript">
-        /**
-         * 回到页面顶部
-         * @param acceleration 加速度
-         * @param time 时间间隔 (毫秒)
-         **/
-        function goTop(acceleration, time) {
-            acceleration = acceleration || 0.1;
-            time = time || 16;
-
-            var x1 = 0;
-            var y1 = 0;
-            var x2 = 0;
-            var y2 = 0;
-            var x3 = 0;
-            var y3 = 0;
-
-            if (document.documentElement) {
-                x1 = document.documentElement.scrollLeft || 0;
-                y1 = document.documentElement.scrollTop || 0;
-            }
-            if (document.body) {
-                x2 = document.body.scrollLeft || 0;
-                y2 = document.body.scrollTop || 0;
-            }
-            var x3 = window.scrollX || 0;
-            var y3 = window.scrollY || 0;
-
-            // 滚动条到页面顶部的水平距离
-            var x = Math.max(x1, Math.max(x2, x3));
-            // 滚动条到页面顶部的垂直距离
-            var y = Math.max(y1, Math.max(y2, y3));
-
-            // 滚动距离 = 目前距离 / 速度, 因为距离原来越小, 速度是大于 1 的数, 所以滚动距离会越来越小
-            var speed = 1 + acceleration;
-            window.scrollTo(Math.floor(x / speed), Math.floor(y / speed));
-
-            // 如果距离不为零, 继续调用迭代本函数
-            if(x > 0 || y > 0) {
-                var invokeFunction = "goTop(" + acceleration + ", " + time + ")";
-                window.setTimeout(invokeFunction, time);
-            }
-        }
-    </script>
-    <a href="#" onclick="goTop();return false;" class="backTop">▲</a>
-        <header>
-            <div class="wrapper">
-                <div class="center">
-                    <div class="searchBox"></div>
-                    <div class="headerMenu">
-                        <ul>
-                            
-                            <li><a href="/">Home</a></li>
-                            
-                            <li><a href="/archives">Archives</a></li>
-                            
-                        </ul>
-                    </div>
-                    <div class="socnets">
-                        
-                        <a href="https://twitter.com/foobraco"><i class="foundicon-twitter" alt="twitter"></i></a>
-                        
-                        
-                        <a href="https://github.com/foobraco" alt="github"><i class="foundicon-github"></i></a>
-                        
-                        <a href="/atom.xml" alt="rss"><i class="foundicon-rss"></i></a>
-                        
-                        <a href="mailto:bryan@502Studios.net"><i class="foundicon-chat"></i></a>
-                        
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <div class="main">
-                        <div class="brand">
-                <div class="wide">
-                    <div class="center">
-                        <h1>
-                            <a href="/">Bryan Alvarado's Blog</a>
-                        </h1>
-                        <p>
-                            
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="content">
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Bryan Alvarado's Blog</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<h2 class="archive-title">2013</h2>
 
 
   
-    <div class="wide">
-    <div class="center">
-        <div class="head">
-            <div class="timeLine">
-                <time datetime="2013-05-25T06:02:06.000Z" class="date">
-                    <a href="/2013/05/25/installing-a-jar-in-maven-local-repository/">May 25 2013</a>
-                </time>
-            </div>
-        </div>
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-08-19T00:02:16.000Z"><a href="/2013/08/18/how-to-load-truetype-fonts-in-libgdx/">Aug 18 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/08/18/how-to-load-truetype-fonts-in-libgdx/">How to Load TrueType Fonts in Libgdx</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>I was having some trouble with coloring Bitmap Fonts using the iOS backend of libgdx, so after a couple of days trying to fix it without solution, I decided to try using TrueType Fonts instead.</p>
+<p>The thing was that the only way to use TTF&#39;s in libgdx is using the libgdx extension called &quot;FreeType Fonts&quot; included in the nightlies of libgdx, but I was having some trouble integrating it into my project, I finally managed to do it, so this post is a summary of the steps I found across the web that helped me getting to work with a few more tips for me that caused me some troubles during the integration.  </p>
+<h3>Including FreeType In Your Game</h3>
+<p>First download the latest <a href="http://libgdx.badlogicgames.com/nightlies/libgdx-nightly-latest.zip">nightly build</a>      </p>
+<p>Once downloaded, navigate to <em>extensions/gdx-freetype</em> and do the following:  </p>
+<ul>
+<li><p>extract gdx-freetype.jar and gdx-freetype-natives.jar to your core project&#39;s libs folder  </p>
+</li>
+<li><p>link gdx-freetype.jar to your core, android and desktop project  </p>
+</li>
+<li><p>link gdx-freetype-natives.jar to your desktop project  </p>
+</li>
+<li><p>copy armeabi/libgdx-freetype.so to your android project&#39;s libs/armeabi folder  </p>
+</li>
+<li><p>copy armeabi-v7a/libgdx-freetype.so to your android project&#39;s libs/armeabi-v7a folder  </p>
+</li>
+</ul>
+<h3>Steps To Make It Work With iOS Games</h3>
+<p>Navigate to your game-ios folder, then open your <strong>convert.properties</strong> file and add the freetype jar to the classpath and the freetype dll, the file should looks like this:  </p>
+<pre><code><figure class="highlight"><pre>SRC = ..<span class="regexp">/my-gdx-game/src/</span>
+CLASSPATH = ..<span class="regexp">/my-gdx-game/libs/gdx.jar;../my-gdx-game/libs/g</span>dx-freetype.jar
+EXCLUDE   =
+IN        = -r:libs<span class="regexp">/ios/gdx.dll -r:libs/ios/gdx-freetype.dll -recurse:target/</span>*.<span class="class"><span class="keyword">class</span>
+<span class="title">OUT</span>       = <span class="title">target</span>/<span class="title">my</span>-<span class="title">gdx</span>-<span class="title">game</span>.<span class="title">dll</span></span>
+</pre></figure></code></pre>
+<p>Now you have to link your native file, the <strong>libgdx-freetype.a</strong> to your monotouch/xamarin project&#39;s libs/ folder. Then you have to add it to your monotouch/xamarin project in the solution explorer, just like you add any file to a solution.  </p>
+<p>Then open your <strong>game-ios.csproj</strong> and for each configuration (e.g. Release|IPhone, Debug|Simulator) you&#39;ll need to modify it to link to <em>gdx-freetype</em> in the same way it already links to libgdx.a and libikvm-natives.a  </p>
+<p>It should looks something like this:  </p>
+<pre><code><figure class="highlight"><pre>-nosymbolstrip -nostrip -cxx -gcc_flags <span class="string">"-L<span class="subst">${ProjectDir}</span>/libs/ios -L<span class="subst">${ProjectDir}</span>/libs/ios/ikvm/bin -likvm-natives -lgdx -lgdx-freetype -force_load <span class="subst">${ProjectDir}</span>/libs/ios/libgdx.a -force_load <span class="subst">${ProjectDir}</span>/libs/ios/ikvm/bin/libikvm-natives.a -force_load <span class="subst">${ProjectDir}</span>/libs/libgdx-freetype.a"</span>
+</pre></figure></code></pre>
+<p>Finally, you have to open your project, right click the “References” entry in your project, select Edit References, then go to “.Net Assemblies” and find the gdx-freetype.dll. Click the add button so it appears on the right sidebar which shows you which assemblies are currently referenced.  </p>
+<h3>How to use it</h3>
+<p>Now remember to include the TTF file inside your data or assets folders on both <em>game-android</em> and <em>game-ios</em> projects, and also remember to change the build action inside Monotouch/Xamarin of the TFF file to <strong>Content</strong> in order to use it inside of the game.  </p>
+<p>Here is a little example on how to use the extension:  </p>
+<pre><code><figure class="highlight"><pre>FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx<span class="preprocessor">.files</span><span class="preprocessor">.internal</span>(<span class="string">"fonts/myfont.ttf"</span>))<span class="comment">;</span>
+BitmapFont font12 = generator<span class="preprocessor">.generateFont</span>(<span class="number">12</span>)<span class="comment">; // font size 12 pixels</span>
+BitmapFont font25 = generator<span class="preprocessor">.generateFont</span>(<span class="number">25</span>)<span class="comment">; // font size 25 pixels</span>
+generator<span class="preprocessor">.dispose</span>()<span class="comment">; // don't forget to dispose to avoid memory leaks!</span>
+</pre></figure></code></pre>
+<p>And that&#39;s it, now you can use TrueType Fonts in your libgdx game, and manage their size as much as you want!  </p>
+<p>Here are the links of the sites I used to assemble this post:  </p>
+<p><a href="https://code.google.com/p/libgdx/wiki/GdxFreeType">GdxFreeType</a>  </p>
+<p><a href="http://www.badlogicgames.com/wordpress/?p=2819">Gdx FreeType Supported on iOS</a></p>
+
+      
+    </div>
+    <footer>
+      
         
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
   
-    <h2 class="title"><a href="/2013/05/25/installing-a-jar-in-maven-local-repository/">Installing a Jar in Maven local repository</a></h1>
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-05-25T06:02:06.000Z"><a href="/2013/05/25/installing-a-jar-in-maven-local-repository/">May 25 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/05/25/installing-a-jar-in-maven-local-repository/">Installing a Jar in Maven local repository</a></h1>
   
 
-        <div class="entry">
-        
-          <p>You have to run the following command in the terminal:</p>
+    </header>
+    <div class="entry">
+      
+        <p>You have to run the following command in the terminal:</p>
 <pre><code>mvn install:install-file -Dfile=<span class="xml"><span class="tag">&lt;<span class="title">path-to-file</span>&gt;</span> -DgroupId=<span class="tag">&lt;<span class="title">group-id</span>&gt;</span> \
 -DartifactId=<span class="tag">&lt;<span class="title">artifact-id</span>&gt;</span> -Dversion=<span class="tag">&lt;<span class="title">version</span>&gt;</span> -Dpackaging=<span class="tag">&lt;<span class="title">packaging</span>&gt;</span></span>
 </code></pre>
@@ -147,34 +150,41 @@
 <p><em>version</em>: the version of the jar/library</p>
 <p><em>packaging</em>: the type of package it is, usually is a jar</p>
 
-        
-        
-          
-          <a href="/2013/05/25/installing-a-jar-in-maven-local-repository/#more" class="more-link">More</a>
-          
-        
-        </div>
+      
     </div>
-</div>
-                
-  
-    <div class="wide">
-    <div class="center">
-        <div class="head">
-            <div class="timeLine">
-                <time datetime="2013-05-25T05:11:04.000Z" class="date">
-                    <a href="/2013/05/24/android_library_maven/">May 24 2013</a>
-                </time>
-            </div>
-        </div>
+    <footer>
+      
         
+          <div class="alignleft">
+            <a href="/2013/05/25/installing-a-jar-in-maven-local-repository/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
   
-    <h2 class="title"><a href="/2013/05/24/android_library_maven/">Using Android Library Projects with Maven</a></h1>
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-05-25T05:11:04.000Z"><a href="/2013/05/24/android_library_maven/">May 24 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/05/24/android_library_maven/">Using Android Library Projects with Maven</a></h1>
   
 
-        <div class="entry">
-        
-          <p>Ok so I&#39;ve decided to start with a new blog (again) and to make a good first post I&#39;m going to explain how to use Android Library Projects integrated with Maven.</p>
+    </header>
+    <div class="entry">
+      
+        <p>Ok so I&#39;ve decided to start with a new blog (again) and to make a good first post I&#39;m going to explain how to use Android Library Projects integrated with Maven.</p>
 <p>Your Android project has to have the android maven plugin in its pom.xml file in order to unpack the android library project that you are going to package as an apklib.</p>
 <p>The first thing you have to make is go to the root directory of your Android Library Project, compress it all in a zip file, and rename to the extension apklib</p>
 <p>The files included in this gist are the maven script to convert your new apklib file into a dependency in your maven repo and the second one is the structure to add the dependency on the android pom.xml file.</p>
@@ -196,27 +206,81 @@
 <span class="tag">&lt;/<span class="title">dependency</span>&gt;</span>
 </code></pre>
 
-        
-        
-          
-          <a href="/2013/05/24/android_library_maven/#more" class="more-link">More</a>
-          
-        
-        </div>
+      
     </div>
-</div>
-                
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/05/24/android_library_maven/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
   
 
-                  
+  <nav id="pagination">
+  
+  
+  <div class="clearfix"></div>
+</nav>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:foobraco.github.io">
+  </form>
 </div>
-        </div>
 
-  <footer>
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/android/">android</a><small>1</small></li>
+  
+    <li><a href="/tags/android%2C-maven%2C-java/">android, maven, java</a><small>1</small></li>
+  
+    <li><a href="/tags/fonts/">fonts</a><small>1</small></li>
+  
+    <li><a href="/tags/game-development/">game development</a><small>1</small></li>
+  
+    <li><a href="/tags/ios/">ios</a><small>1</small></li>
+  
+    <li><a href="/tags/jar/">jar</a><small>1</small></li>
+  
+    <li><a href="/tags/java/">java</a><small>3</small></li>
+  
+    <li><a href="/tags/libgdx/">libgdx</a><small>1</small></li>
+  
+    <li><a href="/tags/maven/">maven</a><small>2</small></li>
+  
+    <li><a href="/tags/maven%2C-java%2C-jar/">maven, java, jar</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
   
   &copy; 2013 Bryan Alvarado
   
-</footer>
+</div>
+<div class="clearfix"></div></footer>
   <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 

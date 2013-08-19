@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Bryan Alvarado's Blog</title>
+  <title>How to Load TrueType Fonts in Libgdx | Bryan Alvarado's Blog</title>
   <meta name="author" content="Bryan Alvarado">
   
   <meta name="description" content="Bryan Alvarado's Blog">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="How to Load TrueType Fonts in Libgdx"/>
   <meta property="og:site_name" content="Bryan Alvarado's Blog"/>
 
   
@@ -44,8 +44,7 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-  <article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
   <div class="post-content">
     <header>
@@ -55,7 +54,7 @@
       
       
   
-    <h1 class="title"><a href="/2013/08/18/how-to-load-truetype-fonts-in-libgdx/">How to Load TrueType Fonts in Libgdx</a></h1>
+    <h1 class="title">How to Load TrueType Fonts in Libgdx</h1>
   
 
     </header>
@@ -111,6 +110,29 @@ generator<span class="preprocessor">.dispose</span>()<span class="comment">; // 
       
         
         
+  
+  <div class="tags">
+    <a href="/tags/java/">java</a>, <a href="/tags/libgdx/">libgdx</a>, <a href="/tags/game-development/">game development</a>, <a href="/tags/fonts/">fonts</a>, <a href="/tags/ios/">ios</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
       
       <div class="clearfix"></div>
     </footer>
@@ -118,114 +140,13 @@ generator<span class="preprocessor">.dispose</span>()<span class="comment">; // 
 </article>
 
 
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-05-25T06:02:06.000Z"><a href="/2013/05/25/installing-a-jar-in-maven-local-repository/">May 25 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/05/25/installing-a-jar-in-maven-local-repository/">Installing a Jar in Maven local repository</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>You have to run the following command in the terminal:</p>
-<pre><code>mvn install:install-file -Dfile=<span class="xml"><span class="tag">&lt;<span class="title">path-to-file</span>&gt;</span> -DgroupId=<span class="tag">&lt;<span class="title">group-id</span>&gt;</span> \
--DartifactId=<span class="tag">&lt;<span class="title">artifact-id</span>&gt;</span> -Dversion=<span class="tag">&lt;<span class="title">version</span>&gt;</span> -Dpackaging=<span class="tag">&lt;<span class="title">packaging</span>&gt;</span></span>
-</code></pre>
-<p>where:</p>
-<p><em>path-to-file</em>: is the path to the jar you want to install in the local repository</p>
-<p><em>group-id</em>: the group in the maven repository you want to use</p>
-<p><em>artifact-id</em>: the name that the jar will receive when you want to use it in a pom.xml</p>
-<p><em>version</em>: the version of the jar/library</p>
-<p><em>packaging</em>: the type of package it is, usually is a jar</p>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/05/25/installing-a-jar-in-maven-local-repository/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
+<section id="comment">
+  <h1 class="title">Comments</h1>
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-</article>
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-05-25T05:11:04.000Z"><a href="/2013/05/24/android_library_maven/">May 24 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2013/05/24/android_library_maven/">Using Android Library Projects with Maven</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Ok so I&#39;ve decided to start with a new blog (again) and to make a good first post I&#39;m going to explain how to use Android Library Projects integrated with Maven.</p>
-<p>Your Android project has to have the android maven plugin in its pom.xml file in order to unpack the android library project that you are going to package as an apklib.</p>
-<p>The first thing you have to make is go to the root directory of your Android Library Project, compress it all in a zip file, and rename to the extension apklib</p>
-<p>The files included in this gist are the maven script to convert your new apklib file into a dependency in your maven repo and the second one is the structure to add the dependency on the android pom.xml file.</p>
-<p>This is the script to generate the apklib in your local maven repository</p>
-<pre><code><span class="comment">mvn</span> <span class="comment">install:install</span>-<span class="comment">file</span> <span class="comment">\</span>
-  <span class="literal">-</span><span class="comment">DgroupId=org</span>.<span class="comment">abc</span> <span class="comment">\</span>
-  <span class="literal">-</span><span class="comment">DartifactId=mywidget</span> <span class="comment">\</span>
-  <span class="literal">-</span><span class="comment">Dpackaging=apklib</span> <span class="comment">\</span>
-  <span class="literal">-</span><span class="comment">Dversion=1</span>.<span class="comment">0</span>.<span class="comment">0</span> <span class="comment">\</span>
-  <span class="literal">-</span><span class="comment">Dfile=mylib</span>.<span class="comment">apklib</span> <span class="comment">\</span>
-  <span class="literal">-</span><span class="comment">DgeneratePom=true
-</code></pre>
-<p>and this is how you add the dependency in your pom.xml</p>
-<pre><code> <span class="tag">&lt;<span class="title">dependency</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.abc<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>mywidget<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="title">version</span>&gt;</span>    
-    <span class="tag">&lt;<span class="title">type</span>&gt;</span>mylib.apklib<span class="tag">&lt;/<span class="title">type</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">dependency</span>&gt;</span>
-</code></pre>
-
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/05/24/android_library_maven/#more" class="more-link">Read More</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-<nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav></div></div>
+</section>
+</div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
@@ -287,7 +208,7 @@ var disqus_shortname = 'foobracoblog';
   var dsq = document.createElement('script');
   dsq.type = 'text/javascript';
   dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 }());
 </script>
